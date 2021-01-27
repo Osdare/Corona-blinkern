@@ -32,9 +32,9 @@ char * enterCode(int mode) // mode 0 = opening code. mode 1 = ID code
     static char code[9];
     bool validInput = false;
     if (mode == 0)
-        printf("1. Input opening code\n");
+        printf("1. Input opening code (7 digits)\n");
     else if (mode == 1)
-        printf("2.1. Enter ID code\n");
+        printf("2.1. Enter ID code (8 digits)\n");
     else
         printf("Error in code: int mode has an invalid value.\n");
     while(validInput == false)
@@ -73,27 +73,29 @@ bool dateValidator(struct date d)
     return true;
 }
 
-void enterDate(struct date d)
+struct date enterDate()
 {
-    printf("2. Input date\n");
-    
+    printf("2. Input date (DD.MM.YYYY)\n");
+    struct date d;
     while(1)
     {
-        scanf("%i%i%i", d.day, d.month, d.year);
+        scanf("%d.%d.%d", &d.day, &d.month, &d.year);
+        
 
         if(dateValidator(d) == false)
             printf("Entered invalid date. Try again\n");
         else
-            return;
+            return d;
     }
 }
 
 int main(void)
 {
+    struct date d;
     printf ("3. Exit program\n");
     const char * code1 = enterCode(0);
     printf("The code is: %s",code1);
-    const char * code2 = enterCode(1);
-    printf("The code is: %s",code2);
+    d = enterDate();
+    printf("The date is: %i.%i.%i", d.day, d.month, d.year);
     return 0;
 }
