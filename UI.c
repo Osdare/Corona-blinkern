@@ -31,7 +31,7 @@ char * enterCode()
 {
     static char code[8];
     bool validInput = false;
-    printf("1. Mata in öppningskod\n");
+    printf("1. Input opening code\n");
     while(validInput == false)
     {
         fgets(code, 9, stdin);
@@ -55,7 +55,7 @@ char * enterCode()
 
 struct date enterDate()
 {
-printf("2. Mata in identifikationskod och datum\n");
+printf("2. Input identificationcode and date\n");
 }
 
 bool dateValidator(struct date d)
