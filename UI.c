@@ -29,7 +29,7 @@ bool isInfected(int code)
         return false;
 }
 
-char *enterCode(int mode) // mode 0 = opening code. mode 1 = ID code
+char *enterCode(int mode) // mode 0 = opening code(got the C). mode 1 = ID code
 {
     static char code[9];
     bool validInput = false;
