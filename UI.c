@@ -1,3 +1,5 @@
+//Vincent and Joels coronaprogram
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <ctype.h>
@@ -19,16 +21,6 @@ bool isLeapYear(struct date d)
         return false; // Not a leap year
 }
 
-bool isInfected(int code)
-{
-    int coronaCodes[3] = {24038623, 56509924, 15515512};
-
-    if (code == coronaCodes[0] || code == coronaCodes[1] || code == coronaCodes[2])
-        return true;
-    else
-        return false;
-}
-
 char *enterCode(int mode) // mode 0 = opening code. mode 1 = ID code
 {
     static char code[9];
@@ -47,15 +39,13 @@ char *enterCode(int mode) // mode 0 = opening code. mode 1 = ID code
             {
                 printf("Invalid input :( try again!\n");
                 count = 0;
-                memset(code, 0, 9*sizeof(char));
+                memset(code, 0, 9 * sizeof(char));
             }
-            
         }
         if (count == 7 + mode)
             validInput = true;
         else
             count = 0;
-        
     }
     return code;
 }
@@ -98,14 +88,14 @@ int main(void)
     struct date d;
 
     const char *id = enterCode(0);
-    printf("%s\n\n",id);
+    printf("%s\n\n", id);
     fflush(stdin);
     d = enterDate();
     printf("\n%d.%d.%d\n", d.day, d.month, d.year);
     printf("-------------------\n");
     printf("Input verfication code: \n\n");
     const char *code = enterCode(1);
-    printf("\n%s\n",code);
+    printf("\n%s\n", code);
     printf("Code activated sucessfully!\n");
     printf("---------------------------\n");
 
