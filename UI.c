@@ -97,8 +97,6 @@ struct date enterDate()
 
 int main(void)
 {
-    struct date d;
-    printf ("3. Exit program\n");
     const char * code1 = enterCode(0);
     printf("The code is: %s",code1);
     d = enterDate();
