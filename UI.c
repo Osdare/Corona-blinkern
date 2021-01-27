@@ -28,14 +28,19 @@ bool isInfected (int code)
         return false;
 }
 
-char * enterCode()
+char * enterCode(int mode) // mode 0 = opening code. mode 1 = ID code
 {
-    static char code[8];
+    static char code[9];
     bool validInput = false;
-    printf("1. Input opening code\n");
+    if (mode == 0)
+        printf("1. Input opening code (7 digits)\n");
+    else if (mode == 1)
+        printf("2.1. Enter ID code (8 digits)\n");
+    else
+        printf("Error in code: int mode has an invalid value.\n");
     while(validInput == false)
     {
-        fgets(code, 9, stdin);
+        fgets(code, 9 + mode, stdin);
         fflush(stdin);
         int i, count;
         for(i = 0; code[i] != '\0'; i++)
@@ -43,7 +48,7 @@ char * enterCode()
             if( isdigit(code[i]) == true)
                 count++;
         }
-        if(count == 7)
+        if(count == 7 + mode)
             validInput = true;
         else
         {
@@ -52,11 +57,6 @@ char * enterCode()
         }
     }
     return code;
-}
-
-struct date enterDate()
-{
-printf("2. Input identificationcode and date\n");
 }
 
 bool dateValidator(struct date d)
@@ -79,16 +79,29 @@ int Quit = 0;
         printf("3. Type 3 to confirm exit: ");
         scanf("%d", &Quit);
 
-        if (Quit == 3)
-        {
-            exit(0);
-        }
+struct date enterDate()
+{
+    printf("2. Input date (DD.MM.YYYY)\n");
+    struct date d;
+    while(1)
+    {
+        scanf("%d.%d.%d", &d.day, &d.month, &d.year);
+        
+
+        if(dateValidator(d) == false)
+            printf("Entered invalid date. Try again\n");
+        else
+            return d;
     }
+}
+
 int main(void)
 {
-    
-    const char * code1 = enterCode();
+    struct date d;
+    printf ("3. Exit program\n");
+    const char * code1 = enterCode(0);
     printf("The code is: %s",code1);
+    d = enterDate();
+    printf("The date is: %i.%i.%i", d.day, d.month, d.year);
     return 0;
-
 }
