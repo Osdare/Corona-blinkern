@@ -93,15 +93,20 @@ struct date enterDate()
 
 int main(void)
 {
+    printf("-------------------\n");
+    printf("Input opening code:\n\n");
     struct date d;
 
     const char *id = enterCode(0);
-    printf("%s\n",id);
+    printf("%s\n\n",id);
     fflush(stdin);
     d = enterDate();
-    printf("%d.%d.%d\n", d.day, d.month, d.year);
+    printf("\n%d.%d.%d\n", d.day, d.month, d.year);
+    printf("-------------------\n");
+    printf("Input verfication code: \n\n");
     const char *code = enterCode(1);
-    printf("%s\n",code);
+    printf("\n%s\n",code);
+    printf("Code activated sucessfully!\n");
 
     return 0;
 }
