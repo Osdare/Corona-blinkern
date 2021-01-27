@@ -29,7 +29,7 @@ bool isInfected (int code)
 
 char * enterCode(int mode) // mode 0 = opening code. mode 1 = ID code
 {
-    static char code[8 + mode];
+    static char code[9];
     bool validInput = false;
     if (mode == 0)
         printf("1. Input opening code\n");
@@ -58,21 +58,6 @@ char * enterCode(int mode) // mode 0 = opening code. mode 1 = ID code
     return code;
 }
 
-void enterDate(struct date d)
-{
-    printf("2. Input date\n");
-    
-    while(dateValidator(d) == false)
-    {
-        scanf("%i%i%i", d.day, d.month, d.year);
-
-        if(dateValidator(d) == false)
-            printf("Entered invalid date. Try again\n");
-        else
-            return;
-    }
-}
-
 bool dateValidator(struct date d)
 {
     const int daysPerMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -88,11 +73,27 @@ bool dateValidator(struct date d)
     return true;
 }
 
+void enterDate(struct date d)
+{
+    printf("2. Input date\n");
+    
+    while(1)
+    {
+        scanf("%i%i%i", d.day, d.month, d.year);
+
+        if(dateValidator(d) == false)
+            printf("Entered invalid date. Try again\n");
+        else
+            return;
+    }
+}
+
 int main(void)
 {
     printf ("3. Exit program\n");
     const char * code1 = enterCode(0);
     printf("The code is: %s",code1);
+    const char * code2 = enterCode(1);
+    printf("The code is: %s",code2);
     return 0;
-
 }
