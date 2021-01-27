@@ -11,7 +11,7 @@ struct date
 
 bool isLeapYear (struct date d)
 {
-    if ((d.year % 4 && d.year % 100 != 0) || d.year % 400 == 0)
+    if ((d.year % 4 == 0 && d.year % 100 != 0) || d.year % 400 == 0)
         return true; // It's a leap year
     else
         return false; // Not a leap year
@@ -68,6 +68,9 @@ bool dateValidator(struct date d)
         return false;
     if(d.day > daysPerMonth[d.month] || d.day < 1)
         return false;
+    if(d.year < 1 || d.year > 3000)
+        return false;
+    return true;
 }
 
 int main(void)
