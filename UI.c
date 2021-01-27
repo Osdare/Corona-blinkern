@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 struct date
 {
@@ -72,10 +73,20 @@ bool dateValidator(struct date d)
         return false;
     return true;
 }
+int Quit = 0;
+    while (Quit == 0)
+    {
+        printf("3. Type 3 to confirm exit: ");
+        scanf("%d", &Quit);
 
+        if (Quit == 3)
+        {
+            exit(0);
+        }
+    }
 int main(void)
 {
-    printf ("3. Exit program\n");
+    
     const char * code1 = enterCode();
     printf("The code is: %s",code1);
     return 0;
