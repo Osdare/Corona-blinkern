@@ -45,7 +45,7 @@ char *enterCode(int mode) // mode 0 = opening code. mode 1 = ID code
                 count++;
             else
             {
-                printf("Invalid input >:(\n");
+                printf("Invalid input :( try again!\n");
                 count = 0;
                 memset(code, 0, 9*sizeof(char));
             }
@@ -107,6 +107,7 @@ int main(void)
     const char *code = enterCode(1);
     printf("\n%s\n",code);
     printf("Code activated sucessfully!\n");
+    printf("---------------------------\n");
 
     return 0;
 }
