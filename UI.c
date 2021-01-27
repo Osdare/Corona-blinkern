@@ -72,7 +72,9 @@ bool dateValidator(struct date d)
 
 int main(void)
 {
+    printf ("3. Exit program\n");
     const char * code1 = enterCode();
     printf("The code is: %s",code1);
     return 0;
+
 }
