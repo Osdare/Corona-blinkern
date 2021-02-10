@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 struct date
 {
@@ -79,6 +80,21 @@ struct date enterDate()
         else
             return d;
     }
+}
+
+{ 
+    boolean bool1, bool2; //bool1 = not infected, bool2 = infected
+    bool1 = x; 
+  
+    if (bool1 == x) { 
+        printf("Checking with server...\n");
+        sleep(3);
+        printf("You are not infected\n"); 
+    } 
+    else { 
+        printf("Checking with server...\n");
+        sleep(3);
+        printf("You might be infected! Test yoself before u wreck yoself!\n"); 
 }
 
 int main(void)
