@@ -1,3 +1,5 @@
+//MAMMA MIA
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -28,6 +30,18 @@ struct node * createList(void)
     header->ID = (rand() % 99999999 + 1);
     header->meetings = 0;
     return header;
+}
+
+void destroyList(struct node* h)
+{   
+    struct node* temp;
+    while (h->next)
+    {
+        temp = h->next;
+        free(temp);
+        h = h->next;
+    }
+    free(h);
 }
 
 struct node *newRegistration(struct node *ptr)
@@ -64,6 +78,20 @@ int lengthList(struct node * h)
     return len;  
 }
 
+void printothersMet(struct node *h)
+{
+    int count = 1;
+    struct node *current = h;
+    while(current != NULL)
+    {
+        for(int i = 0; i < current->meetings; i++)
+            printf("%d has met %d\n", current->ID, current->othersMet[i]);
+        current = current->next; 
+        count++;
+    }
+    return;
+}
+
 void printIDs(struct node *h)
 {
     int count = 1;
@@ -74,6 +102,7 @@ void printIDs(struct node *h)
         current = current->next; 
         count++;
     }
+    return;
 }
 
 void meeting(struct node *p1, struct node *p2)
@@ -95,6 +124,8 @@ void meeting(struct node *p1, struct node *p2)
 
     p1->meetings++;
     p2->meetings++;
+
+    return;
 }
 
 int countLeapYears(struct date d)
@@ -154,9 +185,10 @@ void validateMeetingDates(struct node *h)
         }
         ptr = ptr->next;
     }
+    return;
 }
 
-void checkInfected(struct node *h)//inte färdig
+void checkInfected(struct node *h)
 {
     struct node *current = h;
     while(current != NULL)
@@ -176,9 +208,6 @@ int main(void)
     struct node* p1 = createList();
     newRegistration(p1);
     newRegistration(p1);
-    newRegistration(p1);
-    newRegistration(p1);
-    newRegistration(p1);
     int len = lengthList(p1);
 
     printf("Length of the list is %d\n",len);
@@ -188,10 +217,24 @@ int main(void)
     printf("%d-%d-%d\n",p1->d[p1->meetings-1].year, p1->d[p1->meetings-1].month, p1->d[p1->meetings-1].day);
     printf("ID %d\n",p1->next->next->ID);
     printf("meetings: %d\n",p1->meetings);
-    printf("id of another person: %d\n",p1->othersMet[p1->meetings-1]);
+    printf("\n");
 
-    printIDs(p1);
-
+    p1->intfected = true;
     checkInfected(p1);
+
+    printf("\n");
+    printothersMet(p1);
+    p1->d[0].month--;
+    printf("\n");
+    validateMeetingDates(p1);
+    printothersMet(p1);
+    printf("\n");
+
+    p1->intfected = true;
+    checkInfected(p1);
+
+    destroyList(p1);
+
+    return 0;
 }
 
