@@ -1,9 +1,9 @@
-OBJ = date.o
+OBJ = code.o list.o
 CC=gcc
-CFLAGS = -Wall -pedantic
+CFLAGS = -Wall -pedantic -c
 
-%.o %.c
+%.o: %.c
 	gcc $(CFLAGS) -c $< -o $@
 
-blinker: UI.c code.c list.c
-	gcc $(CFLAGS) $(OBJ) -o blinker UI.c code.c list.c
+UI: UI.c code.c list.c
+	gcc $(CFLAGS) $(OBJ) UI.c code.c list.c
