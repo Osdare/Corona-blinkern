@@ -15,3 +15,5 @@ int countLeapYears(struct date d);
 int dateDifference(struct date d1, struct date d2);
 void validateMeetingDates(struct node *h);
 void checkInfected(struct node *h);
+
+#endif
