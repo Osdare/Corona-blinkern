@@ -82,22 +82,13 @@ struct date enterDate()
     }
 }
 
-
-
-void infect()
-{ 
-    bool bool1, bool2; //bool1 = not infected, bool2 = infected
-  
-    if (bool1) { 
-        printf("Checking with server...\n");
-        sleep(3);
-        printf("You are not infected\n"); 
-    } 
-    else { 
-        printf("Checking with server...\n");
-        sleep(3);
-        printf("You might be infected! Test yoself before u wreck yoself!\n"); 
-    return 0;
+char *makeString(char * code, struct date d)
+{
+    char dateThing[15];
+    strcat(code, " ");
+    sprintf(dateThing,"%d:%d:%d", d.day, d.month, d.year);
+    strcat(code, dateThing);
+    return code;
 }
 
 int main(void)
@@ -113,10 +104,12 @@ int main(void)
     printf("\n%d.%d.%d\n", d.day, d.month, d.year);
     printf("-------------------\n");
     printf("Input verfication code: \n\n");
-    const char *code = enterCode(1);
+    char *code = enterCode(1);
     printf("\n%s\n", code);
     printf("Code activated sucessfully!\n");
     printf("---------------------------\n");
+    char *fileBoi = makeString(code, d);
+    printf("%s",fileBoi);
 
     return 0;
 }
