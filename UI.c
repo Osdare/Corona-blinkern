@@ -82,11 +82,13 @@ struct date enterDate()
     }
 }
 
+
+
+void infect()
 { 
-    boolean bool1, bool2; //bool1 = not infected, bool2 = infected
-    bool1 = x; 
+    bool bool1, bool2; //bool1 = not infected, bool2 = infected
   
-    if (bool1 == x) { 
+    if (bool1) { 
         printf("Checking with server...\n");
         sleep(3);
         printf("You are not infected\n"); 
@@ -95,6 +97,7 @@ struct date enterDate()
         printf("Checking with server...\n");
         sleep(3);
         printf("You might be infected! Test yoself before u wreck yoself!\n"); 
+    return 0;
 }
 
 int main(void)

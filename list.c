@@ -15,10 +15,10 @@ struct date
 struct node
 {
     int ID;
-    int meetings;
-    bool intfected;
-    struct date d[64];
-    int othersMet[64];
+    int meetings;//Number of people this node has met
+    bool intfected;//if a valid code has been entered this bool is true
+    struct date d[64];// Dates of meetings
+    int othersMet[64];// ID of people met
     struct node* next;
 };
 
