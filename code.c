@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-WriteToFile(char *data)
+void WriteToFile(char *data)
 {
     int i;
     FILE * fptr = fopen("code.txt", "a+");
@@ -14,7 +14,7 @@ WriteToFile(char *data)
     return 0;
 }
 
-ValidateFileDates()
+void ValidateFileDates()
 {
 
 }
