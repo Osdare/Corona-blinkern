@@ -2,7 +2,7 @@
 
 void WriteToFile(char *data)
 {
-    int i;
+
     FILE * fptr = fopen("code.txt", "a+");
     if(fptr == NULL)
     {
