@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "code.h"
 
 struct date
 {
@@ -86,7 +87,7 @@ char *makeString(char * code, struct date d)
 {
     char dateThing[15];
     strcat(code, " ");
-    sprintf(dateThing,"%d:%d:%d", d.day, d.month, d.year);
+    sprintf(dateThing,"%d:%d:%d\n", d.day, d.month, d.year);
     strcat(code, dateThing);
     return code;
 }
@@ -110,6 +111,7 @@ int main(void)
     printf("---------------------------\n");
     char *fileBoi = makeString(code, d);
     printf("%s",fileBoi);
+    WriteToFile(fileBoi);
 
     return 0;
 }
